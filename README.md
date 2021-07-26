@@ -1,34 +1,68 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js で CSR のみを利用するサンプル
 
-## Getting Started
+## Development Env
 
-First, run the development server:
+| name  | version |
+| :---- | :------ |
+| node  | 14.17.3 |
+| npm   | 6.14.13 |
+| next  | 11.0.1  |
+| react | 17.0.2  |
 
-```bash
-npm run dev
-# or
-yarn dev
+## Usage
+
+```
+$ npm i
+$ npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 環境構築時のメモ
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- ボイラープレート導入 ~ node,npm バージョン固定
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.tsx`.
+```
+$ npx create-next-app --typescript
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+$ vi .node-version
+# 14.17.3
 
-## Learn More
+$ vi .npmrc
+# engine-strict=true
+# save-exact=true
 
-To learn more about Next.js, take a look at the following resources:
+$ vi package.json
+# "engines": {
+#   "node": "14.17.3",
+#   "npm": "6.14.13"
+# },
+# ...
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+$ npm i
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- bundle-analizer 導入
 
-## Deploy on Vercel
+```
+$ npm i -D @next/bundle-analyzer
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+$ vi next.config
+# const withBundleAnalyzer = require('@next/bundle-analyzer')({
+#  enabled: process.env.ANALYZE === 'true',
+# });
+# const config = {
+#  reactStrictMode: true,
+# };
+# module.exports = withBundleAnalyzer(config);
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- eslint, prettier, husky 導入
+  (Next.js@v11 にはデフォルトで eslint が入っている)
+
+```
+# install後に.eslintrc.json, .prettierrc, .vscode/settings.jsonの設定
+$ npm i -D eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import
+
+# install後にpackage.jsonにscriptsを追加
+# "prettier:quick": "pretty-quick --staged"
+$ npm i -D husky prettier-quick
+```
