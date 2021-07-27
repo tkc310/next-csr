@@ -13,7 +13,21 @@
 
 ```
 $ npm i
+
+# 開発サーバ起動 (HMR & Live Reload)
 $ npm run dev
+
+# /out に静的ファイルをexport
+$ npm run build
+
+# outに出力された静的ファイルの静的ホスティング
+$ npm run static
+
+# mock api server起動
+$ npm run backend
+
+# バンドルファイルのsizeチェックなど
+$ npm run analyze
 ```
 
 ## 環境構築時のメモ
@@ -60,7 +74,7 @@ $ vi next.config
 
 ```
 # install後に.eslintrc.json, .prettierrc, .vscode/settings.jsonの設定
-$ npm i -D eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import
+$ npm i -D @typescript-eslint/{eslint-plugin,parser} eslint-config-prettier eslint-plugin-prettier eslint-import-resolver-typescript eslint-plugin-import
 
 # install後にpackage.jsonにscriptsを追加
 # "prettier:quick": "pretty-quick --staged"

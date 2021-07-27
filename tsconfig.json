@@ -7,8 +7,9 @@
       "@pages/*": ["src/pages/*"],
       "@types/*": ["src/types/*"],
       "@components/*": ["src/components/*"],
-      "@utils/*": ["src/utils/*"],
-      "@assets/*": ["src/assets/*"]
+      "@utils/*": ["src/hooks/*"],
+      "@assets/*": ["src/assets/*"],
+      "@backend/*": ["backend/*"]
     },
     "typeRoots": ["src/types", "node_modules/@types"],
     "target": "es5",

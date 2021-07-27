@@ -8,8 +8,6 @@ module.exports = {
     'next',
     'next/core-web-vitals',
     'plugin:prettier/recommended',
-    'prettier/react',
-    'prettier/@typescript-eslint',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
