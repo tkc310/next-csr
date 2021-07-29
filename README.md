@@ -80,3 +80,22 @@ $ npm i -D @typescript-eslint/{eslint-plugin,parser} eslint-config-prettier esli
 # "prettier:quick": "pretty-quick --staged"
 $ npm i -D husky prettier-quick
 ```
+
+## 考察 Memo
+
+CSR 専用(SPA)といいつつ、Next.js で `next build && next export` すると実質 SSG になる。
+`next export` するとローカルで SSG された静的ファイルが出力され、api や isr が有効にならない。
+(serverless function が作成されない)
+
+従来の SPA とは異なり、page 単位で html を生成するため遷移時は下記のような動きをする。(SSR のように振る舞う)
+
+1. `xxx.com/posts/` にアクセス
+2. `pages/posts/index.html` が返される
+3. 以降は非同期の遷移になる
+
+Rails などのモノシリック FW と Next.js で出力した SPA を組み合わせる場合は、従来のように erb に記載した dom にマウントする形ではなく、controller で SPA のルート URL を提供する形になると思う。
+認証機能を持つサービスの場合は、controller で session の有無を確認してログイン前後のページに振り分ける処理などの処理ができる。
+erb から利用できない以上、helper やテンプレート内でのパラメータ渡しや変数の埋め込みによる出し分けなどの邪法もできない。
+
+上記を踏まえると別ドメインに静的ホスティングしてしまった方が、Rails サーバに優しくなる。
+クラアインとで行いたくない処理(ボリュームのある演算など)が出てきた場合は、service woker か Next.js の api を利用して小さい severless の BFF を作るなどが手段が取れそう。
