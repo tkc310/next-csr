@@ -11,6 +11,7 @@
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
   "editor.formatOnType": true,
-  // Prettier対象外言語
-  "prettier.disableLanguages": ["markdown"]
+  "[markdown]": {
+    "files.trimTrailingWhitespace": false
+  }
 }
