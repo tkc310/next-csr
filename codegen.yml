@@ -2,6 +2,7 @@
 # - https://www.graphql-code-generator.com/docs/getting-started/codegen-config
 # - https://qiita.com/pure-adachi/items/f1e03941e8c0ac47c7ee
 # - https://techblog.yahoo.co.jp/entry/2020121530052952/#graphql-codegen%E3%81%AE%E5%9E%8B%E7%94%9F%E6%88%90%E3%81%AB%E3%82%88%E3%81%A3%E3%81%A6%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%80%9CBFF%E3%82%92%E5%9E%8B%E5%AE%89%E5%85%A8%E3%81%AB%E3%81%99%E3%82%8B
+# - https://zenn.dev/nekoshita/articles/7c454e8e552c0d
 
 schema: ./src/graphql/schema.graphql
 documents:
@@ -10,8 +11,8 @@ generates:
   ./src/graphql/index.ts:
     plugins:
       - typescript
-      - typescript-operations
-      - typescript-react-apollo
+      - typescript-operations # query, mutationから型を作成
+      - typescript-react-apollo # query, mutationからhooks, hocを作成
     config:
       withHooks: true
       withHOC: true

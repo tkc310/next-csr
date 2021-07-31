@@ -81,18 +81,20 @@ $ npm i -D @typescript-eslint/{eslint-plugin,parser} eslint-config-prettier esli
 $ npm i -D husky prettier-quick
 ```
 
-- applo client 導入
+- graphql-codegen, applo client 導入
 
 ```
 # install後にcodegen.ymlの追加、package.jsonのscriptsを追加
 npm i -D @graphql-codegen/cli @graphql-codegen/typescript @graphql-codegen/typescript-operations @graphql-codegen/typescript-react-apollo get-graphql-schema
 
-#
-npm i -S apollo-boost react-apollo graphql-tag graphql
-
+# @see https://zenn.dev/kei178/articles/8c6ad6fd91c9de
+npm i -S @apollo/client graphql
 
 # DjangoのGraphQLからschema.graphqlを出力
 $ npm run sync_schema
+
+# Django側でschema.jsonを出力してもOK
+$ python3 manage.py graphql_schema --schema django_graphql.schema.schema --out schema.graphql
 
 # schema.graphqlからclientで利用するgraphql/index.tsを出力
 $ npm run codegen
