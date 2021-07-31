@@ -1,0 +1,18 @@
+type CreateItem {
+  item: Item
+}
+
+type Item {
+  id: ID!
+  name: String!
+  count: Int!
+}
+
+type Mutation {
+  createItem(count: Int, name: String): CreateItem
+}
+
+type Query {
+  items: [Item]
+}
+

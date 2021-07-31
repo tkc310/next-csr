@@ -81,21 +81,38 @@ $ npm i -D @typescript-eslint/{eslint-plugin,parser} eslint-config-prettier esli
 $ npm i -D husky prettier-quick
 ```
 
+- applo client 導入
+
+```
+# install後にcodegen.ymlの追加、package.jsonのscriptsを追加
+npm i -D @graphql-codegen/cli @graphql-codegen/typescript @graphql-codegen/typescript-operations @graphql-codegen/typescript-react-apollo get-graphql-schema
+
+#
+npm i -S apollo-boost react-apollo graphql-tag graphql
+
+
+# DjangoのGraphQLからschema.graphqlを出力
+$ npm run sync_schema
+
+# schema.graphqlからclientで利用するgraphql/index.tsを出力
+$ npm run codegen
+```
+
 ## 考察 Memo
 
 CSR 専用(SPA)といいつつ、Next.js で `next build && next export` すると実質 SSG になる。  
 `next export` するとローカルで SSG された静的ファイルが出力され、api や isr が有効にならない。  
-(vercel などにデプロイした際に serverless function が作成されない)  
+(vercel などにデプロイした際に serverless function が作成されない)
 
-従来の SPA とは異なり、page 単位で html を生成するため遷移時は下記のような動きをする。(SSR のように振る舞う)  
+従来の SPA とは異なり、page 単位で html を生成するため遷移時は下記のような動きをする。(SSR のように振る舞う)
 
 1. `xxx.com/posts/` にアクセス
 2. `pages/posts/index.html` が返される
 3. 以降は非同期の遷移になる
 
-Rails などのモノシリックFWとNext.jsで出力した SPA を組み合わせる場合は、従来のように erb に記載した dom にマウントする形ではなく、controller で SPA のルート URL を提供する形になると思う。  
+Rails などのモノシリック FW と Next.js で出力した SPA を組み合わせる場合は、従来のように erb に記載した dom にマウントする形ではなく、controller で SPA のルート URL を提供する形になると思う。  
 認証機能を持つサービスの場合は、controller で session の有無を確認してログイン前後のページに振り分ける処理などの処理ができる。  
-erb から利用できない以上、helper やテンプレート内でのパラメータ渡しや変数の埋め込みによる出し分けなどの邪法もできない。  
+erb から利用できない以上、helper やテンプレート内でのパラメータ渡しや変数の埋め込みによる出し分けなどの邪法もできない。
 
-上記を踏まえるとモノシリックFW + SPAの構成で得られる生産性の高さも得られないため、別ドメインに静的ホスティングしてしまった方が、Rails サーバにも優しくてスケールも用意になりコードも責務が別れて綺麗になる。  
-クライアントで行いたくない処理(ボリュームのある演算など)が出てきた場合は、service woker か Next.js の api を利用して小さい severless の BFF を作るなどが手段が取れそう。  
+上記を踏まえるとモノシリック FW + SPA の構成で得られる生産性の高さも得られないため、別ドメインに静的ホスティングしてしまった方が、Rails サーバにも優しくてスケールも用意になりコードも責務が別れて綺麗になる。  
+クライアントで行いたくない処理(ボリュームのある演算など)が出てきた場合は、service woker か Next.js の api を利用して小さい severless の BFF を作るなどが手段が取れそう。

@@ -13,7 +13,9 @@
     "backend": "npx json-server backend/db.js --p 3001",
     "static": "npx static -p 8080 ./out",
     "analyze": "ANALYZE=true next build --profile --debug",
-    "prettier:quick": "pretty-quick --staged"
+    "prettier:quick": "pretty-quick --staged",
+    "sync_schema": "npx get-graphql-schema http://localhost:3001/graphql/ > ./src/graphql/schema.graphql",
+    "codegen": "npx graphql-codegen --config codegen.yml"
   },
   "dependencies": {
     "next": "11.0.1",
@@ -21,6 +23,10 @@
     "react-dom": "17.0.2"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "1.21.8",
+    "@graphql-codegen/typescript": "1.23.0",
+    "@graphql-codegen/typescript-operations": "1.18.4",
+    "@graphql-codegen/typescript-react-apollo": "2.3.1",
     "@next/bundle-analyzer": "11.0.1",
     "@types/react": "17.0.15",
     "@typescript-eslint/eslint-plugin": "4.28.5",
@@ -32,6 +38,7 @@
     "eslint-plugin-import": "2.23.4",
     "eslint-plugin-prettier": "3.4.0",
     "fetch-mock": "9.11.0",
+    "get-graphql-schema": "2.1.2",
     "husky": "7.0.1",
     "json-graphql-server": "2.2.3",
     "json-server": "0.16.3",
