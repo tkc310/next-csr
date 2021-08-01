@@ -15,6 +15,6 @@ generates:
       - typescript-react-apollo # query, mutationからhooks, hocを作成
     config:
       withHooks: true
-      # withHOC: true
+      withHOC: false
       withComponent: false
       reactApolloVersion: 3
