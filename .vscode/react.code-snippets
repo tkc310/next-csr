@@ -3,13 +3,13 @@
   "fc": {
     "prefix": "fc",
     "body": [
-      "import { memo } from 'react';",
+      "import { memo, FC } from 'react';",
       "",
       "type Props = {};",
       "",
       "const defaultProps = {};",
       "",
-      "export const $1 = ({}: Props) => {",
+      "export const $1: FC<Props> = ({}) => {",
       "  return ();",
       "};",
       "",
