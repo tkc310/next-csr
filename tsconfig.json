@@ -9,7 +9,8 @@
       "@components/*": ["src/components/*"],
       "@utils/*": ["src/hooks/*"],
       "@assets/*": ["src/assets/*"],
-      "@backend/*": ["backend/*"]
+      "@backend/*": ["backend/*"],
+      "@graphql/*": ["src/graphql/*"]
     },
     "typeRoots": ["src/types", "node_modules/@types"],
     "target": "es5",

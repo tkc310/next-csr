@@ -2,6 +2,10 @@ type CreateItem {
   item: Item
 }
 
+type CreatePost {
+  post: Post
+}
+
 type Item {
   id: ID!
   name: String!
@@ -9,10 +13,18 @@ type Item {
 }
 
 type Mutation {
+  createPost(content: String, title: String): CreatePost
   createItem(count: Int, name: String): CreateItem
 }
 
+type Post {
+  id: ID!
+  title: String!
+  content: String!
+}
+
 type Query {
+  posts: [Post]
   items: [Item]
 }
 

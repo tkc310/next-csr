@@ -90,10 +90,10 @@ npm i -D @graphql-codegen/cli @graphql-codegen/typescript @graphql-codegen/types
 # @see https://zenn.dev/kei178/articles/8c6ad6fd91c9de
 npm i -S @apollo/client graphql
 
-# DjangoのGraphQLからschema.graphqlを出力
+# APIサーバのGraphiQL / GraphQL Playgroundからschema.graphqlを出力
 $ npm run sync_schema
 
-# Django側でschema.jsonを出力してもOK
+# APIサーバ側でschema.jsonを出力してもOK (Djangoの例)
 $ python3 manage.py graphql_schema --schema django_graphql.schema.schema --out schema.graphql
 
 # schema.graphqlからclientで利用するgraphql/index.tsを出力

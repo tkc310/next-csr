@@ -20,6 +20,11 @@ export type CreateItem = {
   item?: Maybe<Item>;
 };
 
+export type CreatePost = {
+  __typename?: 'CreatePost';
+  post?: Maybe<Post>;
+};
+
 export type Item = {
   __typename?: 'Item';
   id: Scalars['ID'];
@@ -29,7 +34,14 @@ export type Item = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  createPost?: Maybe<CreatePost>;
   createItem?: Maybe<CreateItem>;
+};
+
+
+export type MutationCreatePostArgs = {
+  content?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
 };
 
 
@@ -38,8 +50,16 @@ export type MutationCreateItemArgs = {
   name?: Maybe<Scalars['String']>;
 };
 
+export type Post = {
+  __typename?: 'Post';
+  id: Scalars['ID'];
+  title: Scalars['String'];
+  content: Scalars['String'];
+};
+
 export type Query = {
   __typename?: 'Query';
+  posts?: Maybe<Array<Maybe<Post>>>;
   items?: Maybe<Array<Maybe<Item>>>;
 };
 
@@ -51,6 +71,17 @@ export type ItemsQuery = (
   & { items?: Maybe<Array<Maybe<(
     { __typename?: 'Item' }
     & Pick<Item, 'id' | 'name' | 'count'>
+  )>>> }
+);
+
+export type PostsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type PostsQuery = (
+  { __typename?: 'Query' }
+  & { posts?: Maybe<Array<Maybe<(
+    { __typename?: 'Post' }
+    & Pick<Post, 'id' | 'title' | 'content'>
   )>>> }
 );
 
@@ -104,3 +135,52 @@ export function useItemsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Item
 export type ItemsQueryHookResult = ReturnType<typeof useItemsQuery>;
 export type ItemsLazyQueryHookResult = ReturnType<typeof useItemsLazyQuery>;
 export type ItemsQueryResult = Apollo.QueryResult<ItemsQuery, ItemsQueryVariables>;
+export const PostsDocument = gql`
+    query posts {
+  posts {
+    id
+    title
+    content
+  }
+}
+    `;
+export type PostsProps<TChildProps = {}, TDataName extends string = 'data'> = {
+      [key in TDataName]: ApolloReactHoc.DataValue<PostsQuery, PostsQueryVariables>
+    } & TChildProps;
+export function withPosts<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
+  TProps,
+  PostsQuery,
+  PostsQueryVariables,
+  PostsProps<TChildProps, TDataName>>) {
+    return ApolloReactHoc.withQuery<TProps, PostsQuery, PostsQueryVariables, PostsProps<TChildProps, TDataName>>(PostsDocument, {
+      alias: 'posts',
+      ...operationOptions
+    });
+};
+
+/**
+ * __usePostsQuery__
+ *
+ * To run a query within a React component, call `usePostsQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePostsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePostsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function usePostsQuery(baseOptions?: Apollo.QueryHookOptions<PostsQuery, PostsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<PostsQuery, PostsQueryVariables>(PostsDocument, options);
+      }
+export function usePostsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PostsQuery, PostsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<PostsQuery, PostsQueryVariables>(PostsDocument, options);
+        }
+export type PostsQueryHookResult = ReturnType<typeof usePostsQuery>;
+export type PostsLazyQueryHookResult = ReturnType<typeof usePostsLazyQuery>;
+export type PostsQueryResult = Apollo.QueryResult<PostsQuery, PostsQueryVariables>;

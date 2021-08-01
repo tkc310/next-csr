@@ -11,13 +11,15 @@
     "lint": "next lint",
     "tslint": "npx tsc --noEmit",
     "backend": "npx json-server backend/db.js --p 3001",
-    "static": "npx static -p 8080 ./out",
+    "static": "npx static --p 3000 ./out",
     "analyze": "ANALYZE=true next build --profile --debug",
     "prettier:quick": "pretty-quick --staged",
     "sync_schema": "npx get-graphql-schema http://localhost:3001/graphql/ > ./src/graphql/schema.graphql",
     "codegen": "npx graphql-codegen --config codegen.yml"
   },
   "dependencies": {
+    "@apollo/client": "3.4.1",
+    "graphql": "15.5.1",
     "next": "11.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2"
@@ -42,6 +44,7 @@
     "husky": "7.0.1",
     "json-graphql-server": "2.2.3",
     "json-server": "0.16.3",
+    "node-static": "0.7.11",
     "prettier-quick": "0.0.5",
     "typescript": "4.3.5"
   }
