@@ -189,7 +189,7 @@ Next.js のルーティングは `pages/` に配置したファイル構成に�
 また、上述したように `next export` した際に page 単位で html を生成する。
 
 CSR のみで利用する場合に `pages/posts/[post_id].tsx` のようなファイルを配置すると `[post_id].html` が出力され、ルーティングの挙動自体は SSR のように振る舞ってくれる。
-SSG の場合は `getStaticPashs` の `fallback` オプションによって、html の再生性タイミングが決まるが、定義しない場合(フル CSR)は下記のようにビルド時に実行された html が出力される。
+SSG の場合は `getStaticPashs` の `fallback` オプションによって、html の再生性タイミングが決まるが、`getStaticPashs` を定義しない場合(フル CSR)は下記のようにビルド時に実行された html が出力される。
 
 - `out/posts/[post_id].html`
 
