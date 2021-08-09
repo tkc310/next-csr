@@ -1,7 +1,7 @@
 let config = {
   reactStrictMode: true,
   // @see https://nextjs.org/docs/api-reference/next.config.js/exportPathMap#adding-a-trailing-slash
-  trailingSlash: true,
+  // trailingSlash: true,
   // @see https://nextjs.org/docs/api-reference/next.config.js/ignoring-typescript-errors
   // Notice: deploy前に npx tsc --noEmit を実行して型チェックすること
   typescript: {
