@@ -9,30 +9,22 @@
 | next  | 11.0.1  |
 | react | 17.0.2  |
 
-## Usage
-
-```bash
-$ npm i
-
-# 開発サーバ起動 (HMR & Live Reload)
-$ npm run dev
-
-# /out に静的ファイルをexport
-$ npm run build
-
-# outに出力された静的ファイルの静的ホスティング
-$ npm run static
-
-# mock api server起動
-$ npm run backend
-
-# バンドルファイルのsizeチェックなど
-$ npm run analyze
-```
-
 ## Introduction
 
 ```bash
+# frontend/,backend/ディレクトリ作成
+$ mkdir -p app/{frontend,backend}
+
+# 各プロジェクトのクローン
+$ git clone git@github.com:tkc310/next-csr.git frontend
+$ git clone git@github.com:tkc310/django_graphql.git backend
+```
+
+### frontend Introduction
+
+```bash
+$ cd frontend
+
 # anyenv install
 $ git clone https://github.com/anyenv/anyenv ~/.anyenv
 $ echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> ~/.bash_profile
@@ -55,6 +47,48 @@ $ echo 'eval "$(anyenv init -)"' >> ~/.huskyrc
 
 # npm packages install
 $ npm i
+```
+
+### backend Introduction (Django API サーバ)
+
+```bash
+$ cd backend
+
+$ pip install --dev
+$ python3 manage.py migrate
+
+# 管理画面用ユーザを作成、データを追加できるようにしておく
+$ python3 manage.py createsuperuser
+open http://localhost:3001/admin
+```
+
+## Usage
+
+### frontend Usage
+
+```bash
+# 開発サーバ起動 (HMR & Live Reload)
+$ npm run dev
+
+# /out に静的ファイルをexport
+$ npm run export
+
+# outに出力された静的ファイルの静的ホスティング
+$ npm run serve
+
+# mock api server起動 (後述のDjango APIサーバも利用可能)
+$ npm run backend
+
+# バンドルファイルのsizeチェックなど
+$ npm run analyze
+```
+
+### backend Usage
+
+```bash
+# 開発サーバ起動
+$ python3 manage.py runserver 3001
+$ open open http://localhost:3001/graphql
 ```
 
 ## 環境構築時のメモ
