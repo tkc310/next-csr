@@ -137,9 +137,10 @@ $ vi next.config
 # install後に.eslintrc.json, .prettierrc, .vscode/settings.jsonの設定
 $ npm i -D @typescript-eslint/{eslint-plugin,parser} eslint-config-prettier eslint-plugin-prettier eslint-import-resolver-typescript eslint-plugin-import
 
-# install後にpackage.jsonにscriptsを追加
-# "prettier:quick": "pretty-quick --staged"
-$ npm i -D husky prettier-quick
+# install後にpackage.jsonにscriptsを追加, prepare.js, lint-staged.config.js追加
+$ npm i -D husky lint-staged prettier
+# husky初期化後に.husky/pre-commitを修正
+$ npx husky-init && npm i
 ```
 
 - graphql-codegen, applo client 導入

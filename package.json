@@ -9,14 +9,14 @@
     "export": "next build && next export",
     "start": "next start",
     "lint": "next lint",
-    "tslint": "npx tsc --noEmit",
-    "backend": "npx json-server backend/db.js --p 3001",
+    "tslint": "tsc --noEmit",
+    "backend": "json-server backend/db.js --p 3001",
     "serve": "serve -p 3000 ./out",
     "analyze": "ANALYZE=true next build --profile --debug",
     "prettier:quick": "pretty-quick --staged",
-    "sync_schema": "npx get-graphql-schema http://localhost:3001/graphql/ > ./src/graphql/schema.graphql",
-    "codegen": "npx graphql-codegen --config codegen.yml",
-    "prepare": "node ./prepare.js"
+    "sync_schema": "get-graphql-schema http://localhost:3001/graphql/ > ./src/graphql/schema.graphql",
+    "codegen": "graphql-codegen --config codegen.yml",
+    "prepare": "node ./prepare.js && husky install"
   },
   "dependencies": {
     "@apollo/client": "3.4.1",
@@ -42,7 +42,7 @@
     "eslint-plugin-prettier": "3.4.0",
     "fetch-mock": "9.11.0",
     "get-graphql-schema": "2.1.2",
-    "husky": "7.0.1",
+    "husky": "7.0.0",
     "json-graphql-server": "2.2.3",
     "json-server": "0.16.3",
     "lint-staged": "11.1.2",
