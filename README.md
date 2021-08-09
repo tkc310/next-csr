@@ -140,7 +140,7 @@ $ npm i -D @typescript-eslint/{eslint-plugin,parser} eslint-config-prettier esli
 # install後にpackage.jsonにscriptsを追加, prepare.js, lint-staged.config.js追加
 $ npm i -D husky lint-staged prettier
 # husky初期化後に.husky/pre-commitを修正
-$ npx husky-init && npm i
+$ npx husky-init && npm i && npm run prepare
 ```
 
 - graphql-codegen, applo client 導入
