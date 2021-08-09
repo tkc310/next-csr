@@ -12,6 +12,5 @@ module.exports = {
   ],
 
   // prettier markdown json
-  '**/*.(markdown|json)': (filenames) =>
-    `npx prettier --write ${filenames.join(' ')}`,
+  '**/*.(json)': (filenames) => `npx prettier --write ${filenames.join(' ')}`,
 };
