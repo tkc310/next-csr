@@ -1,0 +1,7 @@
+query postBy($id: Int!) {
+  post(id: $id) {
+    id
+    title
+    content
+  }
+}
