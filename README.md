@@ -242,7 +242,7 @@ export async function getServerSideProps(context) {
   }
 }
 
-const Component = ({ id }) => {
+const PageComponent = ({ id }) => {
   ...
 };
 ```
