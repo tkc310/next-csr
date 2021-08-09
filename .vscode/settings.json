@@ -1,17 +1,11 @@
 {
-  /* Linter and Formatter */
-  // linter
-  "eslint.packageManager": "npm", // ESLintライブラリ解決時に使うパッケージマネージャ
+  "eslint.packageManager": "npm",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true, // eslint
-    "source.fixAll.stylelint": true // Stylelint
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
   },
-  // formatter
-  "editor.defaultFormatter": "esbenp.prettier-vscode", // デフォルトフォーマッターをPrettier
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
-  "editor.formatOnType": true,
-  "[markdown]": {
-    "files.trimTrailingWhitespace": false
-  }
+  "editor.formatOnType": true
 }

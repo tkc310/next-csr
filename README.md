@@ -11,7 +11,7 @@
 
 ## Usage
 
-```
+```bash
 $ npm i
 
 # 開発サーバ起動 (HMR & Live Reload)
@@ -30,11 +30,38 @@ $ npm run backend
 $ npm run analyze
 ```
 
+## Introduction
+
+```bash
+# anyenv install
+$ git clone https://github.com/anyenv/anyenv ~/.anyenv
+$ echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> ~/.bash_profile
+$ echo 'eval "$(anyenv init -)"' >> ~/.bash_profile
+$ source ~/.bash_profile
+$ git clone https://github.com/znz/anyenv-update.git ~/.anyenv/plugins/anyenv-update
+$ git clone https://github.com/znz/anyenv-git.git ~/.anyenv/plugins/anyenv-git
+
+# nodenv install
+$ anyenv install nodenv
+
+# node install
+$ nodenv install 14.17.3
+$ nodenv rehash
+
+# husky setting
+$ touch ~/.huskyrc
+$ echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> ~/.huskyrc
+$ echo 'eval "$(anyenv init -)"' >> ~/.huskyrc
+
+# npm packages install
+$ npm i
+```
+
 ## 環境構築時のメモ
 
 - ボイラープレート導入 ~ node,npm バージョン固定
 
-```
+```bash
 $ npx create-next-app --typescript
 
 $ vi .node-version
@@ -56,7 +83,7 @@ $ npm i
 
 - bundle-analizer 導入
 
-```
+```bash
 $ npm i -D @next/bundle-analyzer
 
 $ vi next.config
@@ -72,7 +99,7 @@ $ vi next.config
 - eslint, prettier, husky 導入
   (Next.js@v11 にはデフォルトで eslint が入っている)
 
-```
+```bash
 # install後に.eslintrc.json, .prettierrc, .vscode/settings.jsonの設定
 $ npm i -D @typescript-eslint/{eslint-plugin,parser} eslint-config-prettier eslint-plugin-prettier eslint-import-resolver-typescript eslint-plugin-import
 
@@ -83,7 +110,7 @@ $ npm i -D husky prettier-quick
 
 - graphql-codegen, applo client 導入
 
-```
+```bash
 # install後にcodegen.ymlの追加、package.jsonのscriptsを追加
 npm i -D @graphql-codegen/cli @graphql-codegen/typescript @graphql-codegen/typescript-operations @graphql-codegen/typescript-react-apollo get-graphql-schema
 

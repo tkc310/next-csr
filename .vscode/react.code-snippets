@@ -3,7 +3,7 @@
   "fc": {
     "prefix": "fc",
     "body": [
-      "import { memo, FC } from 'react';",
+      "import { FC } from 'react';",
       "",
       "type Props = {};",
       "",
@@ -15,7 +15,7 @@
       "",
       "$1.defaultProps = defaultProps;",
       "",
-      "export default memo($1);",
+      "export default $1;",
       ""
     ],
     "description": "functional component"
