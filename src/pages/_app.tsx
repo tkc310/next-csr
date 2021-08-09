@@ -7,6 +7,7 @@ import {
 import { URL } from '@/constants';
 import type { AppProps } from 'next/app';
 import '@styles/globals.css';
+import { FC } from 'react';
 
 const link = createHttpLink({
   uri: `${URL.API}/graphql/`,
@@ -18,12 +19,12 @@ const client = new ApolloClient({
   cache,
 });
 
-function App({ Component, pageProps }: AppProps) {
+const App: FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <ApolloProvider client={client}>
       <Component {...pageProps} />
     </ApolloProvider>
   );
-}
+};
 
 export default App;

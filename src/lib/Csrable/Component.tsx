@@ -1,8 +1,10 @@
-type TProps = {
+import { FC } from 'react';
+
+type Props = {
   children: JSX.Element | JSX.Element[];
 };
 
-const Csrable = (props: TProps) => {
+const Csrable: FC<Props> = (props) => {
   return <>{props.children}</>;
 };
 
