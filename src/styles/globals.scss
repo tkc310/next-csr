@@ -1,0 +1,6 @@
+// すべてのページで読み込むスタイル (認証前ページなどを除く)
+// このファイルでは見通しを良くするためにimportだけする
+
+@import '@/styles/foundation/variable';
+@import '@/styles/foundation/reset';
+@import '@/styles/foundation/base';
