@@ -6,7 +6,7 @@ import {
 } from '@apollo/client';
 import { URL } from '@/constants';
 import type { AppProps } from 'next/app';
-import '@styles/globals.css';
+import '@styles/globals.scss';
 import { FC } from 'react';
 
 const link = createHttpLink({

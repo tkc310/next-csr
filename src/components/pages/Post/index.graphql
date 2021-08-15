@@ -1,0 +1,15 @@
+# @see
+# - https://techblog.yahoo.co.jp/entry/2020121530052952/
+# - https://vivit.hatenablog.com/entry/2020/05/22/193021
+
+query PostIndex($id: Int!) {
+  ...Post
+}
+
+fragment Post on Query {
+  post(id: $id) {
+    id
+    title
+    content
+  }
+}
