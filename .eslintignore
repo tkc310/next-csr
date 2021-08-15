@@ -1,3 +1,7 @@
 *.md
 next.config.js
-graphql/generated/**
+scripts/
+**/node_modules
+mock/*
+src/stories
+src/graphql/generated

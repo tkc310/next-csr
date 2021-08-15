@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# サーバサイドからschema.graphqlを取得するコマンド
+# 開発環境のみ実行される想定ですがエンドポイントを与えられるようにしています
+ENDPOINT_URL=${ENDPOINT_URL:-http://localhost:3001/graphql/}
+echo "ENDPOINT_URL: ${ENDPOINT_URL}"
+
+npx get-graphql-schema $ENDPOINT_URL > ./src/graphql/generated/schema.graphql
