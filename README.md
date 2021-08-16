@@ -176,6 +176,16 @@ $ rm -rf src/stories
 # .storybook/main.js, preview.jsを修正
 ```
 
+- テスト
+
+```bash
+# @see <https://tech.gaogao.asia/next-snapshot-test/>
+# unitテスト、スナップショットテスト、モック関連
+# jest, next-page-tester, testing-library, msw
+$ npm i -D jest @types/jest jest-dom ts-jest babel-jest next-page-tester msw @testing-library/react @testing-library/dom @testing-library/jest-dom @testing-library/dom react-test-renderer @types/react-test-renderer identity-obj-proxy
+
+```
+
 ## 考察 Memo
 
 ### モノリシック FW との関係性について

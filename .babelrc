@@ -1,0 +1,4 @@
+// jest用
+{
+  "presets": ["next/babel"]
+}

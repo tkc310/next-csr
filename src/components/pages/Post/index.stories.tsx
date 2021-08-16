@@ -17,8 +17,8 @@ Default.args = {
     post: {
       __typename: 'Post',
       id: '1',
-      title: 'foo',
-      content: 'bar',
+      title: 'post title',
+      content: 'post content',
     },
   },
 };
