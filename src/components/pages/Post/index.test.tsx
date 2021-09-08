@@ -32,7 +32,7 @@ export const getNextPage = async (route: string) => {
   const pageTester = await getPage({
     nextRoot: `${process.cwd()}/src`,
     route,
-    useDocument: true,
+    useDocument: false,
     wrapper: {
       // eslint-disable-next-line react/display-name
       Page: (Page) => (pageProps) => {
