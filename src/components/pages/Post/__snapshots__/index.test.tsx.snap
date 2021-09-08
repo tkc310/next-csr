@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Post renders without crashing 1`] = `
+"<div id=\\"__next\\"><div>Loading</div></div>
+"
+`;
+
+exports[`Post renders without crashing 2`] = `
+"<div id=\\"__next\\">
+  <h1>Post Detail</h1>
+  <h2>titile foo</h2>
+  <p>content foo</p>
+</div>
+"
+`;
