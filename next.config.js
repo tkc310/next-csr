@@ -16,6 +16,14 @@ let config = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'src/styles')],
   },
+
+  swcMinify: true,
+
+  experimental: {
+    // babelrcが存在する場合はデフォルトfalseになる
+    swcLoader: true,
+    cpus: 4,
+  },
 };
 
 // import secureHeaders from './src/config/secure-headers';
