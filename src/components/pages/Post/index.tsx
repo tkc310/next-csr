@@ -6,6 +6,7 @@ import {
   usePostIndexQuery,
 } from '@/graphql/generated/pages/post';
 import { useRouter } from 'next/dist/client/router';
+import styles from './index.module.scss';
 
 type Props = {
   data: PostFragment;
@@ -15,14 +16,18 @@ type Props = {
 export const PostPresentational: FC<Props> = ({ data }) => {
   const { post } = data;
 
-  return post ? (
-    <>
-      <h1>Post Detail</h1>
-      <h2>{post.title}</h2>
-      <p>{post.content}</p>
-    </>
-  ) : (
-    <p>Postが存在しません</p>
+  return (
+    <div className={styles.container}>
+      {post ? (
+        <>
+          <h1>Post Detail Test</h1>
+          <h2>{post.title}</h2>
+          <p>{post.content}</p>
+        </>
+      ) : (
+        <p>Postが存在しません</p>
+      )}
+    </div>
   );
 };
 
