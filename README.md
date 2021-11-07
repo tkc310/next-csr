@@ -1,14 +1,5 @@
 # Next.js で CSR のみを利用するサンプル
 
-## Development Env
-
-| name  | version |
-| :---- | :------ |
-| node  | 14.17.3 |
-| npm   | 6.14.13 |
-| next  | 11.0.1  |
-| react | 17.0.2  |
-
 ## Introduction
 
 ```bash
