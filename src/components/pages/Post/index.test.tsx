@@ -49,6 +49,10 @@ export const getNextPage = async (route: string) => {
 };
 
 describe('Post', () => {
+  it('hoge', () => {
+    expect(0).toEqual(0);
+  });
+
   it('renders without crashing', async () => {
     const loadingText = 'Loading';
 
