@@ -1,21 +1,21 @@
 // 要素に直接スタイルをつける、reset.cssで打ち消した要素のスタイルを上書きする場所
 
-@import '@/styles/foundation/variable';
+@use '@/styles/foundation/variable' as var;
 
 html,
 body {
-  background: $bg-color-base;
+  background: var.$bg-color-base;
 
-  font-family: $font-family-base;
+  font-family: var.$font-family-base;
   font-display: swap;
-  color: $color-font-base;
+  color: var.$color-font-base;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   font-size: 18px;
 }
 
 a {
-  color: $color-font-base;
+  color: var.$color-font-base;
   text-decoration: underline;
 }
 

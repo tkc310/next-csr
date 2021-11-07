@@ -1,4 +1,15 @@
-// jest用
+// jest, storybook用
 {
-  "presets": ["next/babel"]
+  "presets": ["next/babel"],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          "@": "./src"
+        }
+      }
+    ]
+  ]
 }

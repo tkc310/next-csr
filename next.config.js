@@ -1,3 +1,5 @@
+const path = require('path');
+
 let config = {
   reactStrictMode: true,
 
@@ -9,6 +11,10 @@ let config = {
   // Notice: deploy前に npx tsc --noEmit を実行して型チェックすること
   typescript: {
     ignoreBuildErrors: true,
+  },
+
+  sassOptions: {
+    includePaths: [path.join(__dirname, 'src/styles')],
   },
 };
 
