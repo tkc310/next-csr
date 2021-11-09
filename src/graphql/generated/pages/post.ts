@@ -71,6 +71,7 @@ export type QueryPostArgs = {
 
 export type PostIndexQueryVariables = Exact<{
   id: Scalars['Int'];
+  editable: Scalars['Boolean'];
 }>;
 
 export type PostIndexQuery = { __typename?: 'Query' } & PostFragment;
@@ -83,7 +84,7 @@ export type PostFragment = { __typename?: 'Query' } & {
 
 export const PostFragmentDoc = gql`
   fragment Post on Query {
-    post(id: $id) {
+    post(id: $id) @include(if: $editable) {
       id
       title
       content
@@ -91,7 +92,7 @@ export const PostFragmentDoc = gql`
   }
 `;
 export const PostIndexDocument = gql`
-  query PostIndex($id: Int!) {
+  query PostIndex($id: Int!, $editable: Boolean!) {
     ...Post
   }
   ${PostFragmentDoc}
@@ -110,6 +111,7 @@ export const PostIndexDocument = gql`
  * const { data, loading, error } = usePostIndexQuery({
  *   variables: {
  *      id: // value for 'id'
+ *      editable: // value for 'editable'
  *   },
  * });
  */

@@ -2,12 +2,12 @@
 # - https://techblog.yahoo.co.jp/entry/2020121530052952/
 # - https://vivit.hatenablog.com/entry/2020/05/22/193021
 
-query PostIndex($id: Int!) {
+query PostIndex($id: Int!, $editable: Boolean!) {
   ...Post
 }
 
 fragment Post on Query {
-  post(id: $id) {
+  post(id: $id) @include(if: $editable) {
     id
     title
     content

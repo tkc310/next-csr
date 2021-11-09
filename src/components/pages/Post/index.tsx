@@ -36,16 +36,22 @@ const PostsContainer: FC = () => {
   const router = useRouter();
   const { post_id } = router.query;
   const id = parseInt(String(post_id));
+  const editable = false;
 
   const { data, loading, error } = usePostIndexQuery({
-    variables: { id: id },
+    variables: {
+      id,
+      editable,
+    },
   });
 
   if (loading) return <div>Loading</div>;
   if (error) return <div>Error</div>;
 
   return (
-    <PostPresentational data={filter<PostFragment>(PostFragmentDoc, data)} />
+    <PostPresentational
+      data={filter<PostFragment>(PostFragmentDoc, data, { editable })}
+    />
   );
 };
 
